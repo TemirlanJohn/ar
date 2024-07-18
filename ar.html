@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Board</title>
+    <style>
+        /* CSS стили будут здесь */
+    </style>
+</head>
+<body>
+    <h1>AR Board</h1>
+    <video id="video" autoplay></video>
+    <div id="info">
+        <h2>Information about the board:</h2>
+        <p>This is an AR board that provides augmented reality content.</p>
+    </div>
+    <div class="image-gallery">
+        <!-- Контейнеры изображений будут здесь -->
+    </div>
+    <script>
+        // JavaScript код будет здесь
+    </script>
+</body>
+</html>
+<style>
+    #video {
+        width: 100%;
+        height: auto;
+    }
+    #info {
+        margin-top: 20px;
+    }
+    .image-container {
+        position: relative;
+        display: inline-block;
+        margin: 10px;
+    }
+    .image-container img {
+        width: 200px;
+        height: auto;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .image-container:hover .overlay {
+        opacity: 1;
+    }
+</style>
+<div class="image-gallery">
+    <div class="image-container">
+        <img src="path_to_image1.jpg" alt="Image 1">
+        <div class="overlay">Description 1</div>
+    </div>
+    <div class="image-container">
+        <img src="path_to_image2.jpg" alt="Image 2">
+        <div class="overlay">Description 2</div>
+    </div>
+    <!-- Добавьте столько изображений, сколько нужно -->
+</div>
+<script>
+    // Получение доступа к камере
+    const video = document.getElementById('video');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+        });
+    } else {
+        alert("Sorry, your browser does not support camera access.");
+    }
+</script>
